@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="demo">
+<h2>Skribot Web Control Demo</h2>
+<div id="status">
+	
+</div>
+
+<button type="button" onclick="openGripper()">Open gripper</button>
+<button type="button" onclick="closeGripper()">Close gripper</button>
+</div>
+
+<script>
+function openGripper() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("status").innerHTML =
+      "Open operation success";
+    } else {
+      document.getElementById("status").innerHTML =
+      "Failure";
+    }
+  };
+  xhttp.open("GET", "http://localhost:5000?open", true);
+  xhttp.send();
+}
+function closeGripper() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("status").innerHTML =
+      "Close operation success";
+    } else {
+      document.getElementById("status").innerHTML = 
+      "Failure";
+    }
+  };
+  xhttp.open("GET", "http://localhost:5000?close", true);
+  xhttp.send();
+}
+</script>
+
+</body>
+</html>
