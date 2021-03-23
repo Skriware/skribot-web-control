@@ -1,17 +1,44 @@
 <!DOCTYPE html>
 <html>
+<style>
+body {
+ font-family:monospace;
+}
+.remoteControl {
+	background-color:#44c767;
+	border-radius:28px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:15px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+.remoteControl:hover {
+	background-color:#5cbf2a;
+}
+.stop {
+    background-color:red;
+}
+.revolve {
+    background-color:darkgoldenrod;
+}
+</style>
 <body>
 
 <div id="demo">
-  <h2>Skribot Web Control Demo</h2>
+  <h1>Skribot Web Control Demo</h1>
   <div id="status"></div>
 
   <div id="remoteControl">
     <button type="button" class="remoteControl" name="open">Open gripper</button>
     <button type="button" class="remoteControl" name="close">Close gripper</button>
+    <br><br>
     <button type="button" class="remoteControl" name="forware">Forward</button>
-    <button type="button" class="remoteControl" name="revolve">Revolve</button>
-    <button type="button" class="remoteControl" name="Stop">Stop</button>
+    <button type="button" class="remoteControl revolve" name="revolve">Revolve</button>
+    <button type="button" class="remoteControl stop" name="Stop">Stop</button>
   </div>
 </div>
 
