@@ -7,15 +7,16 @@
   <div id="status"></div>
 
   <div id="remoteControl">
-    <button type="button" name="open">Open gripper</button>
-    <button type="button" name="close">Close gripper</button>
-    <button type="button" name="stop">Stop</button>
-    <button type="button" name="revolve">Revolve</button>
+    <button type="button" class="remoteControl" name="open">Open gripper</button>
+    <button type="button" class="remoteControl" name="close">Close gripper</button>
+    <button type="button" class="remoteControl" name="forware">Forward</button>
+    <button type="button" class="remoteControl" name="revolve">Revolve</button>
+    <button type="button" class="remoteControl" name="Stop">Stop</button>
   </div>
 </div>
 
 <script>
-var buttons = document.getElementsByTagName('button');
+var buttons = document.getElementsByClassName("remoteControl");
 for (let i = 0; i < buttons.length; i++) {
     let button = buttons[i];
     button.addEventListener("click", sendCommand)
