@@ -8,12 +8,16 @@
 	
 </div>
 
-<button type="button" onclick="openGripper()">Open gripper</button>
-<button type="button" onclick="closeGripper()">Close gripper</button>
+<button type="button" name="open" onClick="sendCommand">Open gripper</button>
+<button type="button" name="close" onClick="sendCommand">Close gripper</button>
+
+<button type="button" name="stop" onClick="sendCommand">Stop</button>
+<button type="button" name="revolve" onClick="sendCommand">Revolve</button>
 </div>
 
 <script>
-function openGripper() {
+function sendCommand(event) {
+  var commandName = event.target.name
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -24,24 +28,9 @@ function openGripper() {
       "Failure";
     }
   };
-  xhttp.open("GET", "http://localhost:5000?open", true);
+  xhttp.open("GET", `http://localhost:5000?${commandName}`, true);
   xhttp.send();
-}
-function closeGripper() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("status").innerHTML =
-      "Close operation success";
-    } else {
-      document.getElementById("status").innerHTML = 
-      "Failure";
-    }
-  };
-  xhttp.open("GET", "http://localhost:5000?close", true);
-  xhttp.send();
-}
+ }
 </script>
-
 </body>
 </html>
