@@ -3,21 +3,27 @@
 <body>
 
 <div id="demo">
-<h2>Skribot Web Control Demo</h2>
-<div id="status">
-	
-</div>
+  <h2>Skribot Web Control Demo</h2>
+  <div id="status"></div>
 
-<button type="button" name="open" onClick="sendCommand">Open gripper</button>
-<button type="button" name="close" onClick="sendCommand">Close gripper</button>
-
-<button type="button" name="stop" onClick="sendCommand">Stop</button>
-<button type="button" name="revolve" onClick="sendCommand">Revolve</button>
+  <div id="remoteControl">
+    <button type="button" name="open">Open gripper</button>
+    <button type="button" name="close">Close gripper</button>
+    <button type="button" name="stop">Stop</button>
+    <button type="button" name="revolve">Revolve</button>
+  </div>
 </div>
 
 <script>
+var buttons = document.getElementsByTagName('button');
+for (let i = 0; i < buttons.length; i++) {
+    let button = buttons[i];
+    button.addEventListener("click", sendCommand)
+}
+
 function sendCommand(event) {
-  var commandName = event.target.name
+  var commandName = event.target.name;
+
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
