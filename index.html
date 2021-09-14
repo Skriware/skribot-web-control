@@ -1,5 +1,8 @@
 <!DOCTYPE html>
+
 <html>
+<head></head>
+
 <style>
 body {
  font-family:monospace;
@@ -19,6 +22,9 @@ body {
 .remoteControl:hover {
 	background-color:#5cbf2a;
 }
+#connect {
+	background-color: blue;
+}
 .stop {
     background-color:red;
 }
@@ -31,40 +37,22 @@ body {
 <div id="demo">
   <h1>Skribot Web Control Demo</h1>
   <div id="status"></div>
-
   <div id="remoteControl">
-    <button type="button" class="remoteControl" name="open">Open gripper</button>
-    <button type="button" class="remoteControl" name="close">Close gripper</button>
+ 		<button type="button" class="remoteControl" id="connect">Connect</button>
+ 		<br><br>
+ 		<br><br>
+    <button type="button" class="remoteControl" id="open">Open gripper</button>
+    <button type="button" class="remoteControl" id="close">Close gripper</button>
     <br><br>
-    <button type="button" class="remoteControl" name="forward">Forward</button>
-    <button type="button" class="remoteControl revolve" name="revolve">Revolve</button>
-    <button type="button" class="remoteControl stop" name="stop">Stop</button>
+    <br><br>
+    <button type="button" class="remoteControl" id="forward">Forward</button>
+    <button type="button" class="remoteControl revolve" id="revolve">Revolve</button>
+    <button type="button" class="remoteControl stop" id="stop">Stop</button>
   </div>
 </div>
 
-<script>
-var buttons = document.getElementsByClassName("remoteControl");
-for (let i = 0; i < buttons.length; i++) {
-    let button = buttons[i];
-    button.addEventListener("click", sendCommand)
-}
 
-function sendCommand(event) {
-  var commandName = event.target.name;
-
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("status").innerHTML =
-      "Open operation success";
-    } else {
-      document.getElementById("status").innerHTML =
-      "Failure";
-    }
-  };
-  xhttp.open("GET", `http://localhost:5000?${commandName}`, true);
-  xhttp.send();
- }
-</script>
 </body>
+
+<script src="./index.js"></script>
 </html>
