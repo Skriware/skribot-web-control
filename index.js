@@ -61,8 +61,9 @@ function Pick_Up() {
 function Put_Down() {
     sendToRobot("G 4\n");
 }
-
-function Forward() {
+// Formatting the movment command: M\n<left_motor_state> <right_motor_state>\n
+// motor_state is a spectrum where: 0- full power back; 250- stop; 500 - full power forward. You can use any value from 0-500 range foe each motor.
+function Forward() {                
     sendToRobot("M\n400 400\n");
 }
 
@@ -82,8 +83,8 @@ function Revolve_Right(){
     sendToRobot("M\n500 0\n");
 }
 
-function LED_ON(R,G,B){
-    sendToRobot("H L1 36 L2 39 L3 34 D1 5 17 D2 19 18 Q1 12 21 Q2 23 22 C0 13 16 W1 15 W2 2 \nBEGIN\n1 A 12 0 2 3\n2 C 0\n3 C "+R+" "+G+" "+B+"\n\nRUN_O\n");
+function LED_ON(R,G,B){                                                                         //sending sudocode to the robot
+    sendToRobot("H W1 15 W2 2 \nBEGIN\n1 A 12 0 2 3\n2 C 0\n3 C "+R+" "+G+" "+B+"\n\nRUN_O\n");
 }
 
 function LED_OFF() {
