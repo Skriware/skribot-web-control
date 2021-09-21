@@ -54,6 +54,14 @@ function Release() {
     sendToRobot("G 2\n");
 }
 
+function Pick_Up() {
+    sendToRobot("G 3\n");
+}
+
+function Put_Down() {
+    sendToRobot("G 4\n");
+}
+
 function Forward() {
     sendToRobot("M\n400 400\n");
 }
@@ -62,23 +70,54 @@ function Stop() {
     sendToRobot("M\n250 250\n");
 }
 
-function Revolve() {
-    sendToRobot("M\n400 100\n");
+function Back() {
+    sendToRobot("M\n0 0\n");
 }
 
+function Revolve_Left() {
+    sendToRobot("M\n0 500\n");
+}
+
+function Revolve_Right(){
+    sendToRobot("M\n500 0\n");
+}
+
+function LED_ON(R,G,B){
+    sendToRobot("H L1 36 L2 39 L3 34 D1 5 17 D2 19 18 Q1 12 21 Q2 23 22 C0 13 16 W1 15 W2 2 \nBEGIN\n1 A 12 0 2 3\n2 C 0\n3 C "+R+" "+G+" "+B+"\n\nRUN_O\n");
+}
+
+function LED_OFF() {
+    LED_ON(0, 0, 0);
+}
 var button1 = document.getElementById("connect");
 var button2 = document.getElementById("open");
 var button3 = document.getElementById("close");
-var button4 = document.getElementById("forward");
-var button5 = document.getElementById("revolve");
-var button6 = document.getElementById("stop");
+var button4 = document.getElementById("pick_up");
+var button5 = document.getElementById("put_down");
+var button6 = document.getElementById("forward");
+var button7 = document.getElementById("back");
+var button8 = document.getElementById("revolve_l");
+var button9 = document.getElementById("revolve_r");
+var button10 = document.getElementById("LED_R");
+var button11 = document.getElementById("LED_G");
+var button12 = document.getElementById("LED_B");
+var button13 = document.getElementById("LED_OFF");
+var button14 = document.getElementById("stop");
 
 button1.addEventListener('click', (e) => BTConnect());
 button2.addEventListener('click', (e) => Release());
 button3.addEventListener('click', (e) => Grab());
-button4.addEventListener('click', (e) => Forward());
-button5.addEventListener('click', (e) => Revolve());
-button6.addEventListener('click', (e) => Stop());
+button4.addEventListener('click', (e) => Pick_Up());
+button5.addEventListener('click', (e) => Put_Down());
+button6.addEventListener('click', (e) => Forward());
+button7.addEventListener('click', (e) => Back());
+button8.addEventListener('click', (e) => Revolve_Left());
+button9.addEventListener('click', (e) => Revolve_Right());
+button10.addEventListener('click', (e) => LED_ON(255,0,0));
+button11.addEventListener('click', (e) => LED_ON(0,255,0));
+button12.addEventListener('click', (e) => LED_ON(0,0,255));
+button13.addEventListener('click', (e) => LED_OFF());
+button14.addEventListener('click', (e) => Stop());
 
 console.log("START")
 
